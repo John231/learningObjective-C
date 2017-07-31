@@ -21,6 +21,9 @@
 
 //Method to print name to console
 -(void)sayHello;
+-(void)sayGoodbye;
+-(void)sayGoodMorning;
+-(void)sayGreeting:(NSString*)greeting;
 
 //==================
 //Factory Methods

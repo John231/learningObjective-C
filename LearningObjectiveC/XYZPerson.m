@@ -11,8 +11,25 @@
 
 @implementation XYZPerson
 
+//method for saying hello
 -(void)sayHello {
-    NSLog(@"Hello, World!");
+    [self sayGreeting:@"Hello, World!"];
+}
+-(void)sayGoodbye{
+    [self sayGreeting:@"Goodbye!"];
+}
+-(void)sayGoodMorning{
+    [self sayGreeting:@"Good Morning!"];
+}
+
+//General method to print a greeting to the console
+-(void)sayGreeting:(NSString *)greeting{
+    NSLog(@"%@",greeting);
+}
+
++(id)person{
+    XYZPerson *person = [[self alloc] init];
+    return person;
 }
 
 @end
