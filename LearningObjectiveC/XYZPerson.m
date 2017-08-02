@@ -34,37 +34,10 @@
 //Instance Methods
 //=====================
 
-//method for saying hello
--(void)sayHello:(NSString *)fullName{
-    NSMutableString *helloGreeting = [NSMutableString stringWithString:@"Hello "];
-    [helloGreeting appendString: fullName];
-    [self sayGreeting:helloGreeting];
+//Overridden init method
+-(id)init{
+    return [self initWithFirstName:nil lastName:nil dateOfBirth:nil];
 }
-
--(void)sayGoodbye{
-    [self sayGreeting:@"Goodbye!"];
-}
--(void)sayGoodMorning{
-    [self sayGreeting:@"Good Morning!"];
-}
-
-//General method to print a greeting to the console
--(void)sayGreeting:(NSString *)greeting{
-    NSLog(@"%@",greeting);
-}
-
-//Method which returns the full name of an XYZPerson object
--(NSString*)fullName{
-    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
-}
-
-//Override dealloc method to provide visibility of deallocation in main execution loop
--(void)dealloc{
-    NSLog(@"XYZPerson is being deallocated");
-}
-
-
-
 //Designated initialiser
 -(id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName dateOfBirth:(NSDate *)aDOB{
     
@@ -79,10 +52,37 @@
     }
     return self;
 }
-//Overridden init method
--(id)init{
-    return [self initWithFirstName:nil lastName:nil dateOfBirth:nil];
-}
 
+-(void)sayHello:(NSString *)fullName{
+    NSMutableString *helloGreeting = [NSMutableString stringWithString:@"Hello "];
+    [helloGreeting appendString: fullName];
+    [self sayGreeting:helloGreeting];
+}
+-(void)sayGoodbye{
+    [self sayGreeting:@"Goodbye!"];
+}
+-(void)sayGoodMorning{
+    [self sayGreeting:@"Good Morning!"];
+}
+//General method to print a greeting to the console
+-(void)sayGreeting:(NSString *)greeting{
+    NSLog(@"%@",greeting);
+}
+//Method which returns the full name of an XYZPerson object
+-(NSString*)fullName{
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+-(void)createSpouse:(NSString *)firstName lastName:(NSString *)lastName{
+    //Set the married variable to true
+    _married = TRUE;
+    _spouse = [[XYZPerson alloc] init];
+    _spouse.firstName = firstName;
+    _spouse.lastName = lastName;
+    NSLog(@"Spouse created with name: %@",[_spouse fullName]);
+}
+//Override dealloc method to provide visibility of deallocation in main execution loop
+-(void)dealloc{
+    NSLog(@"XYZPerson is being deallocated");
+}
 
 @end

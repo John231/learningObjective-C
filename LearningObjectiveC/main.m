@@ -42,18 +42,29 @@ int main(int argc, const char * argv[]) {
         //Append suffix to Tyrion's name
         [tyrionFirstName appendString:@"ny"];
         [tyrion sayHello: [tyrion fullName]];
+        
+        //Create spouse for Tyrion
+        [tyrion createSpouse:@"Sansa" lastName:@"Stark"];
+        [tyrion.spouse sayHello:[tyrion.spouse fullName]];
+        
+        NSLog(@"Is %@ married? %@", tyrion.firstName, (tyrion.isMarried ? @"Yes" : @"No"));
+        NSLog(@"Tyrion is married to %@", [tyrion.spouse fullName]);
+        
+        tyrion.spouse = nil;
         tyrion = nil;
         
         //Example involving a weak variable
-        NSString *__weak weakTheonFirstName = [NSString stringWithFormat:@"Theon"];
+        //NSString *__weak weakTheonFirstName = [NSString stringWithFormat:@"Theon"];
         NSString *__strong strongTheonFirstName = [NSString stringWithFormat:@"Theon"];
-        XYZPerson *theon = [XYZPerson personWithName:weakTheonFirstName lastName:@"Greyjoy"];
+        XYZPerson *theon = [XYZPerson personWithName:strongTheonFirstName lastName:@"Greyjoy"];
         [theon sayHello:[theon fullName]];
-        NSLog(@"Weak reference: %@",weakTheonFirstName);
+        //NSLog(@"Weak reference: %@",weakTheonFirstName);
+        
+        //NSLog(@"Weak: %@, Strong: %@",weakTheonFirstName,strongTheonFirstName);
         theon = nil;
-        NSLog(@"Weak: %@, Strong: %@",weakTheonFirstName,strongTheonFirstName);
         
         XYZPerson *dave = [XYZPerson personWithName:@"Dave" lastName:@"Smith"];
+        [dave sayHello:[dave fullName]];
     }
     return 0;
 }

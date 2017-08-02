@@ -14,24 +14,26 @@
 @property (copy) NSString *firstName; //Maintains copies!
 @property NSString *lastName;
 @property NSDate *dateOfBirth;
-@property (weak) NSString *spouse;
+@property XYZPerson *spouse;
+@property (readonly, getter=isMarried) BOOL married;
+
+//=====================
+//Class Factory Methods
+//=====================
++(id)person;
++(id)personWithName:(NSString*)firstName lastName:(NSString*)lastName;
 
 //==================
 //Instance Methods
 //==================
-
-//Method to print name to console
+-(id)init;
+-(id)initWithFirstName:(NSString*)firstName lastName:(NSString*)lastName dateOfBirth:(NSDate*)aDOB;
 -(void)sayHello:(NSString*)fullName;
 -(void)sayGoodbye;
 -(void)sayGoodMorning;
 -(void)sayGreeting:(NSString*)greeting;
 -(NSString*)fullName;
--(id)init;
--(id)initWithFirstName:(NSString*)firstName lastName:(NSString*)lastName dateOfBirth:(NSDate*)aDOB;
+-(void)createSpouse:(NSString*)firstName lastName:(NSString*)lastName;
 -(void)dealloc;
-//==================
-//Factory Methods
-//==================
-+(id)person;
-+(id)personWithName:(NSString*)firstName lastName:(NSString*)lastName;
+
 @end
