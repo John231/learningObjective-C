@@ -16,6 +16,8 @@
 @property NSDate *dateOfBirth;
 @property XYZPerson *spouse;
 @property (readonly, getter=isMarried) BOOL married;
+@property (readonly) float weightKg;
+@property (readonly) float heightCm;
 
 //=====================
 //Class Factory Methods
@@ -34,6 +36,8 @@
 -(void)sayGreeting:(NSString*)greeting;
 -(NSString*)fullName;
 -(void)createSpouse:(NSString*)firstName lastName:(NSString*)lastName;
+-(void)measureWeight;
+-(void)measureHeight;
 -(void)dealloc;
 
 @end

@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 #import "XYZPerson.h"
 #import "XYZShoutingPerson.h"
+#import "XYZPerson+XYZPersonNameDisplayAdditions.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -50,7 +52,7 @@ int main(int argc, const char * argv[]) {
         NSLog(@"Is %@ married? %@", tyrion.firstName, (tyrion.isMarried ? @"Yes" : @"No"));
         NSLog(@"Tyrion is married to %@", [tyrion.spouse fullName]);
         
-        tyrion.spouse = nil;
+        //This will deallocate both tyrion and spouse!
         tyrion = nil;
         
         //Example involving a weak variable
@@ -65,6 +67,11 @@ int main(int argc, const char * argv[]) {
         
         XYZPerson *dave = [XYZPerson personWithName:@"Dave" lastName:@"Smith"];
         [dave sayHello:[dave fullName]];
+        //Make use of the shortened first name method in the XYZPersonNameDisplayAdditions category
+        NSLog(@"Shortened first name: %@", [dave shortFirstNameLastNameString]);
+        [dave measureWeight];
+        [dave measureHeight];
+        NSLog(@"%@ is %.01fcm tall and weighs %.01fkg",dave.firstName, dave.heightCm, dave.weightKg);
     }
     return 0;
 }

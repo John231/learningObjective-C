@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "XYZPerson.h"
 
+//Class extension for height and weight
+@interface XYZPerson ()
+
+@property (readwrite) float weightKg;
+@property (readwrite) float heightCm;
+
+@end
+
 @implementation XYZPerson
 
 //=====================
@@ -80,6 +88,14 @@
     _spouse.lastName = lastName;
     NSLog(@"Spouse created with name: %@",[_spouse fullName]);
 }
+
+-(void)measureWeight{
+    [self setWeightKg:65.3];
+}
+-(void)measureHeight{
+    [self setHeightCm:145.2];
+}
+
 //Override dealloc method to provide visibility of deallocation in main execution loop
 -(void)dealloc{
     NSLog(@"XYZPerson is being deallocated");
